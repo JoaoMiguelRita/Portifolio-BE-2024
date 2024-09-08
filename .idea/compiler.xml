@@ -10,7 +10,15 @@
         <module name="exercicio02" />
         <module name="Atividades-BE-Aula-01 (1)" />
         <module name="Atividades-BE-Aula-01" />
+        <module name="exercicio07" />
+        <module name="exercicio06" />
+        <module name="exercicio05" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="exercicio07" options="-parameters" />
+    </option>
   </component>
 </project>
