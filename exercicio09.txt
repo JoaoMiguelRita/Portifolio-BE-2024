@@ -1,0 +1,4 @@
+Mateus Buogo destacou a importância de pensar em segurança no desenvolvimento das aplicações. Cite pelo menos duas tecnologias que podem ser utilizadas para proteger sistemas de backend contra ataques cibernéticos.
+
+Resposta:
+Uma tecnologia que ao meu ver é imprescindível para qualquer armazenamento de dados é a criptografia. Ao criptografar uma informação seu nível de proteção aumenta. Assim como a autentificação de dois fatores, que exige que o usuário confirme sua identidade por outros meios.
