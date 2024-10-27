@@ -1,50 +1,35 @@
 package com.example.exercicio12.Services;
 
-import com.example.exercicio12.Conta;
-import com.example.exercicio12.ContaMapper;
-import com.example.exercicio12.TransacaoDTOs;
+import com.example.exercicio12.Models.Conta;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TransacoesService {
-    private final List<Conta> contas = new ArrayList<>();
+
+    private List<Conta> contas;
 
     public TransacoesService() {
-        // Inicializa duas contas
-        contas.add(new Conta("500-1", "Fulano", 1000.0));
-        contas.add(new Conta("320-2", "Ciclano", 500.0));
+        contas = new ArrayList<>();
+        inicializarContas();
     }
 
-    // Encontra uma conta pelo código
-    public Optional<Conta> encontrarContaPorCodigo(String codigo) {
-        return contas.stream().filter(c -> c.getCodigo().equals(codigo)).findFirst();
+    private void inicializarContas(){
+        contas.add(new Conta("500-1", "Fulano"));
+        contas.add(new Conta("320-2", "Ciclano"));
     }
 
-    // Realiza a transação
-    public TransacaoDTOs.TransacaoResponseDTO realizarTransacao(TransacaoDTOs.TransacaoRequestDTO transacaoRequest) {
-        Conta origem = encontrarContaPorCodigo(transacaoRequest.origem())
-                .orElseThrow(() -> new IllegalArgumentException("Conta de origem não encontrada"));
-        Conta destino = encontrarContaPorCodigo(transacaoRequest.destino())
-                .orElseThrow(() -> new IllegalArgumentException("Conta de destino não encontrada"));
+    public Conta encontrarContaPorCodigo(String codigo) {
+        return contas.stream()
+                .filter(conta -> conta.getCodigo().equals(codigo))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Conta não encontrada: " + codigo));
+    }
 
-        // Valida saldo
-        if (origem.getSaldo() < transacaoRequest.valor()) {
-            throw new IllegalArgumentException("Saldo insuficiente na conta de origem");
-        }
-
-        // Realiza a transação
-        origem.setSaldo(origem.getSaldo() - transacaoRequest.valor());
-        destino.setSaldo(destino.getSaldo() + transacaoRequest.valor());
-
-        // Retorna o DTO da transação realizada
-        return new TransacaoDTOs.TransacaoResponseDTO(
-                ContaMapper.toDTO(origem),
-                ContaMapper.toDTO(destino),
-                transacaoRequest.valor()
-        );
+    public List<Conta> getContas(){
+        return contas;
     }
 }

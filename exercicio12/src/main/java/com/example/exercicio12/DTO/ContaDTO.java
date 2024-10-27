@@ -1,17 +1,14 @@
-package com.example.exercicio12;
+package com.example.exercicio12.DTO;
 
-public class Conta {
+public class ContaDTO {
     private String codigo;
     private String cliente;
-    private Double saldo;
 
-    public Conta(String codigo, String cliente, Double saldo) {
+    public ContaDTO(String codigo, String cliente){
         this.codigo = codigo;
         this.cliente = cliente;
-        this.saldo = saldo;
     }
 
-    // Getters e Setters
     public String getCodigo() {
         return codigo;
     }
@@ -26,13 +23,5 @@ public class Conta {
 
     public void setCliente(String cliente) {
         this.cliente = cliente;
-    }
-
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
     }
 }

@@ -1,7 +1,7 @@
-package com.example.exercicio12.Controllers;
+package com.example.exercicio11.Controllers;
 
-import com.example.exercicio12.Services.TransacoesService;
-import com.example.exercicio12.TransacaoDTOs;
+import com.example.exercicio11.Services.TransacoesService;
+import com.example.exercicio11.TransacaoDTOs;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
